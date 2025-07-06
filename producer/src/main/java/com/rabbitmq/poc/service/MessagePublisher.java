@@ -1,5 +1,7 @@
-package com.rabbitmq.poc;
+package com.rabbitmq.poc.service;
 
+import com.rabbitmq.poc.config.RabbitProducerConfig;
+import com.rabbitmq.poc.request.TransactionRequest;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +13,11 @@ public class MessagePublisher {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void publish(com.rabbitmq.poc.OrderRequest order) {
+    public void publish(TransactionRequest request) {
         rabbitTemplate.convertAndSend(
                 RabbitProducerConfig.EXCHANGE,
                 RabbitProducerConfig.ROUTING_KEY,
-                order
+                request
         );
     }
 }

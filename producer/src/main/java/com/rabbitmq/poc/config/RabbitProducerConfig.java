@@ -1,4 +1,4 @@
-package com.rabbitmq.poc;
+package com.rabbitmq.poc.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitProducerConfig {
-    public static final String QUEUE = "order.queue";
-    public static final String EXCHANGE = "order.exchange";
-    public static final String ROUTING_KEY = "order.key";
+    public static final String QUEUE = "transaction.queue";
+    public static final String EXCHANGE = "transaction.exchange";
+    public static final String ROUTING_KEY = "transaction.key";
 
     @Bean
     public Queue queue() {
