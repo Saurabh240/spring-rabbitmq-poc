@@ -23,6 +23,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**","/actuator/**").permitAll()
                         .requestMatchers("/transactions").hasAuthority("ROLE_user")
                         .anyRequest().authenticated()
                 )
