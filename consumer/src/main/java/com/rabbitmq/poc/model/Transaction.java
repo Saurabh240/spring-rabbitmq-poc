@@ -13,8 +13,8 @@ public class Transaction {
     @Id
     private UUID id;
 
-    private UUID companyId;
-    private UUID userId;
+    private String companyId;
+    private String userId;
 
     private String header;
     private String companyName;

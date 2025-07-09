@@ -1,10 +1,10 @@
 package com.rabbitmq.poc.controller;
 
-import com.rabbitmq.poc.config.JwtUtils;
 import com.rabbitmq.poc.request.TransactionRequest;
-import com.rabbitmq.poc.service.CompanyService;
 import com.rabbitmq.poc.service.MessagePublisher;
-import com.rabbitmq.poc.service.UserService;
+import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,22 +17,20 @@ import javax.validation.Valid;
 @RequestMapping("/transactions")
 public class TransactionController {
 
-    private final CompanyService companyService;
-    private final UserService userService;
     private final MessagePublisher publisher;
-    private final JwtUtils jwtUtils;
 
-    public TransactionController(CompanyService companyService, UserService userService, MessagePublisher publisher, JwtUtils jwtUtils) {
-        this.companyService = companyService;
-        this.userService = userService;
+    public TransactionController(MessagePublisher publisher) {
         this.publisher = publisher;
-        this.jwtUtils = jwtUtils;
     }
 
     @PostMapping
-    public ResponseEntity<String> createTransaction(@Valid @RequestBody TransactionRequest request) throws Exception {
-        companyService.createCompany(request.getCompanyName());
-        userService.createUser(request.getDeviceId(),"abcdefgh", request.getCompanyName(), "USER");
+    public ResponseEntity<String> createTransaction(@Valid @RequestBody TransactionRequest request, HttpServletRequest httpServletRequest) throws Exception {
+        Claims claims = (Claims) httpServletRequest.getAttribute("claims");
+        if (claims == null || !"ROLE_user".equals(claims.get("role"))) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only users can ingest transactions.");
+        }
+        request.setUserId(claims.get("sub", String.class));
+        request.setCompanyId(claims.get("companyName", String.class));
         publisher.publish(request);
         return ResponseEntity.ok("Queued successfully");
     }

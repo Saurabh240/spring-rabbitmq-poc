@@ -5,6 +5,8 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
@@ -20,10 +22,10 @@
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
           <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-          <stringProp name="HTTPSampler.path">orders</stringProp>
+          <stringProp name="HTTPSampler.path">transactions</stringProp>
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -33,10 +35,14 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;orderId&quot;: &quot;${__UUID}&quot;,&#xd;
-  &quot;product&quot;: &quot;item&quot;,&#xd;
-  &quot;quantity&quot;: 1&#xd;
-}</stringProp>
+  &quot;header&quot;: &quot;Airtel&quot;,&#xd;
+  &quot;companyName&quot;: &quot;Phoenix&quot;,&#xd;
+  &quot;staffName&quot;: &quot;John Doe&quot;,&#xd;
+  &quot;deviceId&quot;: &quot;device-12345&quot;,&#xd;
+  &quot;rawSms&quot;: &quot;Your OTP is 123456. Do not share it with anyone.&quot;,&#xd;
+  &quot;timestamp&quot;: &quot;2025-07-01T12:30:00Z&quot;&#xd;
+}&#xd;
+</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -48,6 +54,10 @@
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjYsInJvbGUiOiJST0xFX3VzZXIiLCJjb21wYW55TmFtZSI6IlBob2VuaXgiLCJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTc1MjA0NjU1NywiZXhwIjoxNzUyMTMyOTU3fQ.Nz0GhUiOpVJj6VtuyQcvcGd31_wa5mkpOY5yT06NiLA</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -87,7 +97,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">C:\Users\saura\OneDrive\Desktop\FREELANCING\UPWORK\keegan\rabbitmq-poc\Test Result</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
@@ -124,7 +134,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">C:\Users\saura\OneDrive\Desktop\FREELANCING\UPWORK\keegan\rabbitmq-poc\aggregate.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
@@ -161,7 +171,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">C:\Users\saura\OneDrive\Desktop\FREELANCING\UPWORK\keegan\rabbitmq-poc\summary.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
