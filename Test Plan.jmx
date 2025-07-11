@@ -36,7 +36,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
   &quot;header&quot;: &quot;Airtel&quot;,&#xd;
-  &quot;companyName&quot;: &quot;Phoenix&quot;,&#xd;
+  &quot;companyName&quot;: &quot;Tesla&quot;,&#xd;
   &quot;staffName&quot;: &quot;John Doe&quot;,&#xd;
   &quot;deviceId&quot;: &quot;device-12345&quot;,&#xd;
   &quot;rawSms&quot;: &quot;Your OTP is 123456. Do not share it with anyone.&quot;,&#xd;
@@ -57,7 +57,7 @@
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjYsInJvbGUiOiJST0xFX3VzZXIiLCJjb21wYW55TmFtZSI6IlBob2VuaXgiLCJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTc1MjA0NjU1NywiZXhwIjoxNzUyMTMyOTU3fQ.Nz0GhUiOpVJj6VtuyQcvcGd31_wa5mkpOY5yT06NiLA</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjksInJvbGUiOiJST0xFX3VzZXIiLCJjb21wYW55TmFtZSI6IlRlc2xhIiwic3ViIjoidGVzbGFAZ21haWwuY29tIiwiaWF0IjoxNzUyMTcyMTY5LCJleHAiOjE3NTIyNTg1Njl9.UzRIyzOrhVrRiPAKJ5A88lV48AS8e--m246yBTwiTs8</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
