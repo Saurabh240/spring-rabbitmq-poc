@@ -12,6 +12,5 @@ public class TransactionRequest {
     @NotBlank private String deviceId;
     @NotBlank private String rawSms;
     private String userId;
-    private String companyId;
     @NotBlank private String timestamp;
 }

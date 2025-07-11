@@ -10,6 +10,5 @@ public class TransactionRequest {
     private String deviceId;
     private String rawSms;
     private String userId;
-    private String companyId;
     private String timestamp;
 }

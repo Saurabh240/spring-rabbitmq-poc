@@ -17,21 +17,20 @@ public class TransactionConsumerService {
 
     public void saveToSchema(String schema, Transaction tx) {
         String sql = "INSERT INTO \"" + schema + "\".transaction (" +
-                "id, company_id, company_name, device_id, header, raw_sms, received_at, staff_name, timestamp, user_id" +
-                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "id, company_name, device_id, header, raw_sms, received_at, staff_name, timestamp, user_id" +
+                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setObject(1, tx.getId());
-            stmt.setString(2, tx.getCompanyId());
-            stmt.setString(3, tx.getCompanyName());
-            stmt.setString(4, tx.getDeviceId());
-            stmt.setString(5, tx.getHeader());
-            stmt.setString(6, tx.getRawSms());
-            stmt.setTimestamp(7, Timestamp.valueOf(tx.getReceivedAt()));
-            stmt.setString(8, tx.getStaffName());
-            stmt.setTimestamp(9, Timestamp.valueOf(tx.getTimestamp()));
-            stmt.setString(10, tx.getUserId());
+            stmt.setString(2, tx.getCompanyName());
+            stmt.setString(3, tx.getDeviceId());
+            stmt.setString(4, tx.getHeader());
+            stmt.setString(5, tx.getRawSms());
+            stmt.setTimestamp(6, Timestamp.valueOf(tx.getReceivedAt()));
+            stmt.setString(7, tx.getStaffName());
+            stmt.setTimestamp(8, Timestamp.valueOf(tx.getTimestamp()));
+            stmt.setString(9, tx.getUserId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Insert failed for schema: " + schema, e);

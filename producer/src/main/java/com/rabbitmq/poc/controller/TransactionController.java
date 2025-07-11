@@ -30,7 +30,7 @@ public class TransactionController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only users can ingest transactions.");
         }
         request.setUserId(claims.get("sub", String.class));
-        request.setCompanyId(claims.get("companyName", String.class));
+        request.setCompanyName(claims.get("companyName", String.class));
         publisher.publish(request);
         return ResponseEntity.ok("Queued successfully");
     }

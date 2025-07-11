@@ -21,7 +21,6 @@ public class TransactionListener {
     public void handleMessage(TransactionRequest request) {
         Transaction tx = new Transaction();
         tx.setId(UUID.randomUUID());
-        tx.setCompanyId(request.getCompanyId());
         tx.setCompanyName(request.getCompanyName());
         tx.setDeviceId(request.getDeviceId());
         tx.setHeader(request.getHeader());

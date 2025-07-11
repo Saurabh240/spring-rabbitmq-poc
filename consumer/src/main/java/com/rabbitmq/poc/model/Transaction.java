@@ -12,10 +12,7 @@ import java.util.UUID;
 public class Transaction {
     @Id
     private UUID id;
-
-    private String companyId;
     private String userId;
-
     private String header;
     private String companyName;
     private String staffName;
