@@ -9,6 +9,8 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: user
       RABBITMQ_DEFAULT_PASS: pass
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
 
   postgres:
     image: postgres:15
@@ -23,3 +25,4 @@ services:
 
 volumes:
   pgdata:
+  rabbitmq-data:
